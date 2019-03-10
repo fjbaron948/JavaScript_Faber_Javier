@@ -1,5 +1,5 @@
 //Inicia proyecto
-var calculadora = (function(document, undefined){
+    var calculadora = (function(document, undefined){
     var error_op = "La operación solicitada no existe.";
     var newVal = false,
         maxLen = 9,
@@ -44,6 +44,16 @@ var calculadora = (function(document, undefined){
           domBtns[i].onclick = events.eBtnClick;
       }
     }
+
+    //Agregando efectos de animación a las teclas
+    Array.from(domBtns).forEach(function(element) {
+      element.addEventListener("mousedown", function() {
+      element.setAttribute("style", "transform:scale(0.85,0.85)")
+      });
+      element.addEventListener("mouseup", function() {
+      element.setAttribute("style", "transform:scale(1,1)")
+      });
+    });
   
     var events = {
       eBtnClick: function(e){
@@ -184,7 +194,7 @@ var calculadora = (function(document, undefined){
       idBOp = id;
     }
   
-  // Inicia Operaciones Suma, Resta, Multiplicación, División y Raiz Cuadrada
+    // Inicia Operaciones Suma, Resta, Multiplicación, División y Raiz Cuadrada
     function add (v1, v2){
       return v1 + v2;
     }
@@ -201,8 +211,7 @@ var calculadora = (function(document, undefined){
       return v1 / v2;
     }
   
-  // Finaliza Operaciones Suma, Resta, Multiplicación, División y Raiz Cuadrada
-  
+    // Finaliza Operaciones Suma, Resta, Multiplicación, División y Raiz Cuadrada
     var initialize = function(){
       initVars()
       getBtns();
@@ -210,7 +219,7 @@ var calculadora = (function(document, undefined){
     }
   
     return{
-        init: initialize
+      init: initialize
     }
   
   })(document);
