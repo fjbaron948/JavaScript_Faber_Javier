@@ -39,22 +39,21 @@
       domBtns = document.getElementsByClassName("tecla");
     }
   
+    //Agregando efectos de animación a las teclas
     var subscribeEvents = function(){
       for(var i = 0, len = domBtns.length; i < len; i++) {
           domBtns[i].onclick = events.eBtnClick;
       }
+      Array.from(domBtns).forEach(function(element) {
+        element.addEventListener("mousedown", function() {
+        element.setAttribute("style", "transform:scale(0.85,0.85)")
+        });
+        element.addEventListener("mouseup", function() {
+        element.setAttribute("style", "transform:scale(1,1)")
+        });
+      });
     }
-
-    //Agregando efectos de animación a las teclas
-    Array.from(domBtns).forEach(function(element) {
-      element.addEventListener("mousedown", function() {
-      element.setAttribute("style", "transform:scale(0.85,0.85)")
-      });
-      element.addEventListener("mouseup", function() {
-      element.setAttribute("style", "transform:scale(1,1)")
-      });
-    });
-  
+    
     var events = {
       eBtnClick: function(e){
         switch (this.id) {
